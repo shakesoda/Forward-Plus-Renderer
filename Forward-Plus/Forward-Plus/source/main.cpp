@@ -17,11 +17,12 @@ void InitGLFW(int argc, char* argv[]) {
 	glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
 	glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
 	glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
-	gWindow = glfwCreateWindow(mode->width, mode->height, "Forward+ Renderer", monitor, NULL);
+	gWindow = glfwCreateWindow(mode->width/2, mode->height/2, "Forward+ Renderer", NULL, NULL);
 	if (!gWindow) {
 		throw std::runtime_error("glfwCreateWindow failed. Can your hardware handle OpenGL 4.5?");
 	}
 	glfwMakeContextCurrent(gWindow);
+	glfwGetFramebufferSize(gWindow, &SCREEN_SIZE.x, &SCREEN_SIZE.y);
 
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK) {
@@ -53,8 +54,9 @@ void InitGLFW(int argc, char* argv[]) {
 
 void InitScene() {
 	// Define work group sizes in x and y direction based off screen size and tile size (in pixels)
-	workGroupsX = (SCREEN_SIZE.x + (SCREEN_SIZE.x % 16)) / 16;
-	workGroupsY = (SCREEN_SIZE.y + (SCREEN_SIZE.y % 16)) / 16;
+	int tile_size = 16;
+	workGroupsX = (SCREEN_SIZE.x + (SCREEN_SIZE.x % tile_size)) / tile_size;
+	workGroupsY = (SCREEN_SIZE.y + (SCREEN_SIZE.y % tile_size)) / tile_size;
 	size_t numberOfTiles = workGroupsX * workGroupsY;
 
 	// Generate our shader storage buffers
