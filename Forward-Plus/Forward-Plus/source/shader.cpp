@@ -24,6 +24,7 @@ Shader::Shader(const GLchar* computePath) {
 		computeCode = cShaderStream.str();
 	}
 	catch (std::ifstream::failure e) {
+		std::cout << computePath << std::endl;
 		std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
 	}
 

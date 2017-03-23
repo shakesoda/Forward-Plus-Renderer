@@ -201,21 +201,21 @@ int main(int argc, char **argv) {
 	InitGLFW(argc, argv);
 
 	// TODO: Make these directories relative to root directory of project
-	Shader depthShader("D:\\Git\\Forward-Plus-Renderer\\Forward-Plus\\Forward-Plus\\source\\shaders\\depth.vert.glsl",
-		"D:\\Git\\Forward-Plus-Renderer\\Forward-Plus\\Forward-Plus\\source\\shaders\\depth.frag.glsl", NULL);
-	Shader lightCullingShader("D:\\Git\\Forward-Plus-Renderer\\Forward-Plus\\Forward-Plus\\source\\shaders\\light_culling.comp.glsl");
+	Shader depthShader("source/shaders/depth.vert.glsl",
+		"source/shaders/depth.frag.glsl", NULL);
+	Shader lightCullingShader("source/shaders/light_culling.comp.glsl");
 
 #if defined(DEPTH_DEBUG)
-	Shader depthDebugShader("D:\\Git\\Forward-Plus-Renderer\\Forward-Plus\\Forward-Plus\\source\\shaders\\depth_debug.vert.glsl",
-		"D:\\Git\\Forward-Plus-Renderer\\Forward-Plus\\Forward-Plus\\source\\shaders\\depth_debug.frag.glsl", NULL);
+	Shader depthDebugShader("source/shaders/depth_debug.vert.glsl",
+		"source/shaders/depth_debug.frag.glsl", NULL);
 #elif defined(LIGHT_DEBUG)
-	Shader lightDebugShader("D:\\Git\\Forward-Plus-Renderer\\Forward-Plus\\Forward-Plus\\source\\shaders\\light_debug.vert.glsl",
-		"D:\\Git\\Forward-Plus-Renderer\\Forward-Plus\\Forward-Plus\\source\\shaders\\light_debug.frag.glsl", NULL);
+	Shader lightDebugShader("source/shaders/light_debug.vert.glsl",
+		"source/shaders/light_debug.frag.glsl", NULL);
 #else
-	Shader lightAccumulationShader("D:\\Git\\Forward-Plus-Renderer\\Forward-Plus\\Forward-Plus\\source\\shaders\\light_accumulation.vert.glsl",
-		"D:\\Git\\Forward-Plus-Renderer\\Forward-Plus\\Forward-Plus\\source\\shaders\\light_accumulation.frag.glsl", NULL);
-	Shader hdrShader("D:\\Git\\Forward-Plus-Renderer\\Forward-Plus\\Forward-Plus\\source\\shaders\\hdr.vert.glsl",
-		"D:\\Git\\Forward-Plus-Renderer\\Forward-Plus\\Forward-Plus\\source\\shaders\\hdr.frag.glsl", NULL);
+	Shader lightAccumulationShader("source/shaders/light_accumulation.vert.glsl",
+		"source/shaders/light_accumulation.frag.glsl", NULL);
+	Shader hdrShader("source/shaders/hdr.vert.glsl",
+		"source/shaders/hdr.frag.glsl", NULL);
 #endif
 
 	// So we need to create a depth map FBO
@@ -271,7 +271,7 @@ int main(int argc, char **argv) {
 	// TODO: Want to replace this path thing with a pay to do this agnostic of what the file path of the project is
 	// Modified the Crytek Sponza model for use in our scene
 	// http://www.crytek.com/cryengine/cryengine3/downloads
-	Model sponzaModel("D:\\Git\\Forward-Plus-Renderer\\Forward-Plus\\Forward-Plus\\crytek-sponza\\sponza.obj");
+	Model sponzaModel("crytek-sponza/sponza.obj");
 
 	// Initialize the scene by setting up the buffers and assigning default values
 	InitScene();
