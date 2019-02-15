@@ -2,7 +2,7 @@
 
 // Based on: https://github.com/JoeyDeVries/LearnOpenGL/blob/master/includes/learnopengl/mesh.h
 
-Mesh::Mesh(vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures) {
+Mesh::Mesh(vector<Vertex> vertices, vector<GLushort> indices, vector<Texture> textures) {
 	this->vertices = vertices;
 	this->indices = indices;
 	this->textures = textures;
@@ -47,7 +47,7 @@ void Mesh::Draw(Shader shader) {
 
 	// Draw mesh
 	glBindVertexArray(this->VAO);
-	glDrawElements(GL_TRIANGLES, (GLsizei)this->indices.size(), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, (GLsizei)this->indices.size(), GL_UNSIGNED_SHORT, 0);
 	glBindVertexArray(0);
 
 	// Reset to defaults

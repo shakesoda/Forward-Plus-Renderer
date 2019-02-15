@@ -34,11 +34,11 @@ struct Texture {
 class Mesh {
 public:
 	vector<Vertex> vertices;
-	vector<GLuint> indices;
+	vector<GLushort> indices;
 	vector<Texture> textures;
 	GLuint VAO;
 
-	Mesh(vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures);
+	Mesh(vector<Vertex> vertices, vector<GLushort> indices, vector<Texture> textures);
 
 	void Draw(Shader shader);
 

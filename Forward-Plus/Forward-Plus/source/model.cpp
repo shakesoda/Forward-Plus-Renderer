@@ -38,7 +38,7 @@ void Model::ProcessNode(aiNode* node, const aiScene* scene) {
 Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene) {
 	// Data to fill
 	vector<Vertex> vertices;
-	vector<GLuint> indices;
+	vector<GLushort> indices;
 	vector<Texture> textures;
 
 	// Walk through each of the mesh's vertices

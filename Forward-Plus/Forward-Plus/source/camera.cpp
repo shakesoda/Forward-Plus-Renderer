@@ -43,10 +43,11 @@ void Camera::ProcessMouseMovement(GLfloat xOffset, GLfloat yOffset, GLboolean co
 }
 
 void Camera::Update() {
-	glm::vec3 front;
-	front.x = cos(glm::radians(this->yaw)) * cos(glm::radians(this->pitch));
-	front.y = sin(glm::radians(this->pitch));
-	front.z = sin(glm::radians(this->yaw)) * cos(glm::radians(this->pitch));
+	glm::vec3 front(
+		cos(glm::radians(this->yaw)) * cos(glm::radians(this->pitch)),
+		sin(glm::radians(this->pitch)),
+		sin(glm::radians(this->yaw)) * cos(glm::radians(this->pitch))
+	);
 	this->front = glm::normalize(front);
 	this->right = glm::normalize(glm::cross(this->front, this->worldUp));
 	this->up = glm::normalize(glm::cross(this->right, this->front));
